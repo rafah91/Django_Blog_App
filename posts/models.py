@@ -17,6 +17,7 @@ class Post(models.Model):
     title=models.CharField(max_length=120)
     content=models.TextField( max_length=30000)
     publish_date=models.DateTimeField(default=timezone.now)
+    image = models.ImageField(upload_to='posts')
     tags = TaggableManager()
 
 class Comment(models.Model):
