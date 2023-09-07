@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from posts.views import post_list
 from posts.views import post_detail
-from posts.views import add_post, edit_post
+from posts.views import add_post, edit_post, delete_post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +27,6 @@ urlpatterns = [
     path('blog/add',add_post),
     
     path('blog/<int:post_id>', post_detail),
-    path('blog/<int:post_id/edit>', edit_post),
+    path('blog/<int:post_id>/edit', edit_post),
+    path('blog/<int:post_id>/delete', delete_post),
 ]
