@@ -16,6 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
 from posts.views import post_list
 from posts.views import post_detail
 from posts.views import add_post, edit_post, delete_post
@@ -30,3 +33,5 @@ urlpatterns = [
     path('blog/<int:post_id>/edit', edit_post),
     path('blog/<int:post_id>/delete', delete_post),
 ]
+urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
