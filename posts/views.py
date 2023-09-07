@@ -24,3 +24,17 @@ def add_post(request):
         form = PostForm()
             
     return render(request,'add_post.html',{'form':form})
+
+def edit_post(request, post_id):
+    if request.method =="POST":
+        form=PostForm(request.POST,request.FILES)
+        if form.is_valid():
+            myform = form.save(commit=False)
+            myform.author = request.user
+            myform.save()
+            return redirect('/blog/')
+    
+    else:
+        form = PostForm()
+            
+    return render(request,'edit_post.html',{'form':form})
