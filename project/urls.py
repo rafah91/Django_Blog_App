@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from posts.views import post_list
 from posts.views import post_detail
 from posts.views import add_post, edit_post, delete_post
-from posts.views2 import PostList, PostDetail, PostCreate , PostEdit
+from posts.views2 import PostList, PostDetail, PostCreate , PostEdit, PostDelete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,7 +32,7 @@ urlpatterns = [
     
     path('blog/<int:pk>',  PostDetail.as_view()),
     path('blog/<int:pk>/edit', PostEdit.as_view()),
-    path('blog/<int:post_id>/delete', delete_post),
+    path('blog/<int:pk>/delete', PostDelete.as_view()),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
